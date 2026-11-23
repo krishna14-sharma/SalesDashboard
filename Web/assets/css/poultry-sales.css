@@ -1,0 +1,20 @@
+﻿/* ===== Poultry Products Sales Dashboard (uses dashboard.css as base) ===== */
+.prod-card {
+    background: var(--card); border-radius: var(--radius); height: 100%; padding: .9rem 1rem;
+    box-shadow: 0 1px 3px rgba(30,30,20,.06); border-left: 5px solid var(--pc); cursor: pointer;
+    display: flex; flex-direction: column; gap: .35rem; transition: transform .12s, box-shadow .12s;
+}
+.prod-card:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,.07); }
+.prod-card .rank { font-size: .68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--pc); }
+.prod-card .name { font-weight: 800; font-size: .98rem; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; min-height: 2.5em; }
+.prod-card .sales { font-size: 1.35rem; font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.prod-card .meta { display: flex; justify-content: space-between; gap: .5rem; font-size: .78rem; color: var(--ink-soft); }
+.prod-card .meta b { color: var(--ink); }
+.prod-card .bar { height: 6px; background: #efebe3; border-radius: 99px; overflow: hidden; }
+.prod-card .bar span { display: block; height: 100%; background: var(--pc); border-radius: 99px; }
+
+.tax-list { display: flex; flex-direction: column; gap: .3rem; font-size: .82rem; }
+.tax-row { display: grid; grid-template-columns: 1fr auto auto; gap: .75rem; align-items: baseline; font-variant-numeric: tabular-nums; }
+.tax-row .t { color: var(--ink-soft); font-size: .76rem; }
+
+#filterBody .form-select option { white-space: normal; }

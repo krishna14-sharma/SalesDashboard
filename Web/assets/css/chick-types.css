@@ -1,0 +1,61 @@
+﻿/* ===== Chick type-wise outstanding (uses dashboard.css + outstanding.css) ===== */
+:root { --t-Br: #e09a1a; --t-Ly: #2a9d8f; --t-Ck: #c2553d; --t-Ot: #8d99ae; }
+
+/* type cards */
+.tcard {
+    background: #fff; border-radius: var(--radius); box-shadow: 0 1px 3px rgba(30,30,20,.06);
+    border-top: 4px solid var(--tc); padding: 1rem 1.1rem; height: 100%; cursor: pointer; text-align: left; width: 100%; border-left: 0; border-right: 0; border-bottom: 0;
+}
+.tcard.active { box-shadow: 0 0 0 2px var(--tc); }
+.tcard .tname { display: flex; align-items: center; gap: .5rem; font-weight: 800; font-size: 1rem; }
+.tcard .tname .dot { width: 10px; height: 10px; margin: 0; background: var(--tc); }
+.tcard .tdue { font-size: 1.55rem; font-weight: 800; letter-spacing: -.02em; color: var(--due); margin: .35rem 0 .1rem; font-variant-numeric: tabular-nums; }
+.tcard .tdue.zero { color: var(--ink-soft); }
+.tcard .tsub { font-size: .8rem; color: var(--ink-soft); }
+.tcard .tsub b { color: var(--ink); }
+.tcard .age-strip { height: 8px; margin: .6rem 0 .5rem; }
+.tcard .tgrid { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem .75rem; font-size: .78rem; color: var(--ink-soft); }
+.tcard .tgrid b { display: block; color: var(--ink); font-size: .88rem; font-variant-numeric: tabular-nums; }
+.type-note { font-size: .8rem; color: var(--ink-soft); margin: .25rem 0 1rem; }
+
+/* customer table with grouped headers */
+.ct-table thead tr.grp th { text-align: center; font-size: .72rem; color: #fff; border-bottom: 0; cursor: default; letter-spacing: .04em; }
+.ct-table thead tr.grp th.g-Br { background: var(--t-Br); } .ct-table thead tr.grp th.g-Ly { background: var(--t-Ly); }
+.ct-table thead tr.grp th.g-Ck { background: var(--t-Ck); } .ct-table thead tr.grp th.g-Ot { background: var(--t-Ot); }
+.ct-table thead tr.grp th.blank { background: #faf8f4; }
+.ct-table thead tr.cols th { top: 26px; }
+.ct-table td.sep, .ct-table th.sep { border-left: 2px solid #efebe3; }
+.ct-table tbody tr { cursor: pointer; }
+.ls { white-space: nowrap; }
+.ls .d { font-size: .82rem; }
+.ls .ago { display: block; font-size: .7rem; color: var(--ink-soft); }
+.ls .ago.stale { color: #b45309; font-weight: 700; }
+.na { color: #cdc7bb; }
+
+/* phone cards */
+.ct-cards { padding: .5rem .75rem; display: flex; flex-direction: column; gap: .5rem; }
+.ct-card { border: 1px solid var(--line); border-radius: 12px; padding: .7rem .8rem; background: #fff; cursor: pointer; }
+.ct-card .top { display: flex; justify-content: space-between; gap: .75rem; align-items: flex-start; margin-bottom: .45rem; }
+.ct-card .tot { font-weight: 800; text-align: right; white-space: nowrap; }
+.ct-card .trow { display: grid; grid-template-columns: 64px 1fr auto; gap: .4rem; align-items: center; font-size: .76rem; padding: .3rem 0; border-top: 1px dashed var(--line); }
+.ct-card .trow > span:nth-child(2) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ct-card .trow .tn { font-weight: 700; display: flex; align-items: center; gap: .35rem; }
+.ct-card .trow .tn i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.ct-card .trow .due { font-weight: 800; color: var(--due); text-align: right; white-space: nowrap; }
+.ct-card .trow .due.zero { color: var(--ink-soft); font-weight: 600; }
+
+/* modal type sections */
+.tsec { background: #fff; border-radius: 12px; margin-bottom: .75rem; box-shadow: 0 1px 3px rgba(30,30,20,.06); border-left: 5px solid var(--tc); overflow: hidden; }
+.tsec-head { display: flex; flex-wrap: wrap; gap: .3rem 1.25rem; align-items: baseline; padding: .75rem 1rem; }
+.tsec-head h3 { font-size: 1rem; font-weight: 800; margin: 0 auto 0 0; }
+.tsec-head span { font-size: .82rem; color: var(--ink-soft); }
+.tsec-head span b { color: var(--ink); }
+.tsec-head span b.due { color: var(--due); }
+.tsec .table { font-size: .8rem; margin: 0; }
+.tsec .table th { font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); background: #faf8f4; white-space: nowrap; }
+.tsec .table td, .tsec .table th { white-space: nowrap; }
+.tsec .num { text-align: right; font-variant-numeric: tabular-nums; }
+.tsec tr.paid td { color: #a39d90; }
+.ct-mini { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: .5rem; margin-bottom: 1rem; }
+.ledger-info { font-size: .78rem; color: var(--ink-soft); line-height: 1.35; }
+.tsec .narr { white-space: normal; min-width: 220px; max-width: 380px; color: var(--ink-soft); }

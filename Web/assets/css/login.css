@@ -1,0 +1,159 @@
+﻿/* ===== Login page ===== */
+:root {
+    --shell: #1B2536;       /* navy - brand side, text, button   */
+    --shell-2: #26324A;
+    --yolk: #F2B632;        /* the one warm accent                */
+    --albumen: #FFFFFF;     /* form side                          */
+    --feather: #2A8C82;     /* focus                              */
+    --error: #B53A2A;
+    --ink: #1B2536;
+    --ink-2: #566078;
+    --rule: #DCE0E8;
+    --field: #F5F7FA;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+    margin: 0; background: var(--albumen); color: var(--ink);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+}
+.login-shell { min-height: 100vh; display: grid; grid-template-columns: minmax(380px, 46fr) 54fr; }
+
+/* ================= brand side ================= */
+.brand-side {
+    background: var(--shell); color: #fff; position: relative; overflow: hidden;
+    display: grid; grid-template-rows: auto 1fr auto; padding: 40px clamp(32px, 5vw, 72px);
+}
+/* faint speckle, like an eggshell */
+.brand-side::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,.05) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 70% 80%, rgba(255,255,255,.04) 0 1px, transparent 1.5px);
+    background-size: 23px 23px, 37px 37px;
+}
+.brand-id { display: flex; align-items: center; gap: 12px; position: relative; font-weight: 700; font-size: 16px; }
+.brand-logo { height: 40px; width: auto; max-width: 160px; object-fit: contain; }
+.egg-mark {
+    width: 30px; height: 38px; flex: 0 0 auto; display: inline-block;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: radial-gradient(circle at 50% 64%, var(--yolk) 0 32%, #fff 34% 100%);
+    box-shadow: inset 0 -3px 0 rgba(0,0,0,.08);
+}
+
+.hero { align-self: center; position: relative; max-width: 460px; padding: 32px 0; }
+.egg { width: clamp(150px, 15vw, 200px); height: auto; display: block; margin-bottom: 40px; overflow: visible; }
+.egg .glow { transform-origin: 100px 172px; animation: incubate 6s ease-in-out infinite; }
+@keyframes incubate { 0%, 100% { opacity: .8; transform: scale(1); } 50% { opacity: 1; transform: scale(1.06); } }
+.hero-title {
+    font-size: clamp(30px, 3.1vw, 44px); line-height: 1.08; font-weight: 800; letter-spacing: -.025em;
+    margin: 0 0 18px; max-width: 13ch; text-wrap: balance;
+}
+.hero-copy { color: rgba(255,255,255,.68); font-size: 16px; line-height: 1.6; margin: 0; max-width: 40ch; }
+.brand-foot { position: relative; margin: 0; color: rgba(255,255,255,.42); font-size: 13px; }
+
+/* ================= form side ================= */
+.form-side { display: flex; align-items: center; justify-content: center; padding: 48px 24px; }
+.form-card { width: 100%; max-width: 380px; }
+.mobile-id { display: none; }
+
+.form-card h1 { font-size: 34px; line-height: 1.1; font-weight: 800; letter-spacing: -.025em; margin: 0; }
+.sub { color: var(--ink-2); margin: 6px 0 32px; font-size: 16px; }
+
+.field { margin-bottom: 20px; }
+.field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--ink); }
+.control { position: relative; }
+.control > i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #8A93A6; font-size: 17px; pointer-events: none; transition: color .15s; }
+.control input {
+    width: 100%; height: 52px; padding: 0 16px 0 46px; font: inherit; font-size: 16px; color: var(--ink);
+    background: var(--field); border: 1.5px solid transparent; border-radius: 12px; outline: none;
+    transition: border-color .15s, background-color .15s, box-shadow .15s;
+}
+.control input:hover { background: #EEF1F6; }
+.control input:focus { background: #fff; border-color: var(--feather); box-shadow: 0 0 0 4px rgba(42,140,130,.14); }
+.control input:focus + .reveal, .control:focus-within > i { color: var(--feather); }
+.control input.is-invalid { border-color: var(--error); background: #fff; box-shadow: 0 0 0 4px rgba(181,58,42,.10); }
+#txtPwd { padding-right: 52px; }
+.reveal {
+    position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+    width: 40px; height: 40px; border: 0; border-radius: 9px; background: transparent; color: #6B7488; font-size: 17px;
+}
+.reveal:hover { background: rgba(27,37,54,.06); color: var(--ink); }
+.reveal:focus-visible { outline: 2px solid var(--feather); outline-offset: 1px; }
+.caps { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 13px; font-weight: 600; color: #8A5A00; }
+
+/* custom checkbox */
+.remember { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 14px; color: var(--ink-2); margin: 4px 0 28px; user-select: none; }
+.remember input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.remember .box {
+    width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid #B9C0CE; display: grid; place-items: center;
+    flex: 0 0 auto; background: #fff; transition: background-color .15s, border-color .15s;
+}
+.remember .box i { font-size: 14px; color: #fff; opacity: 0; transition: opacity .15s; }
+.remember input:checked + .box { background: var(--shell); border-color: var(--shell); }
+.remember input:checked + .box i { opacity: 1; }
+.remember input:focus-visible + .box { outline: 2px solid var(--feather); outline-offset: 2px; }
+
+.btn-signin {
+    width: 100%; height: 54px; border: 0; border-radius: 12px; cursor: pointer;
+    background: var(--shell); color: #fff; font: inherit; font-size: 16px; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    box-shadow: inset 0 -3px 0 var(--yolk);
+    transition: background-color .15s, transform .05s;
+}
+.btn-signin:hover { background: var(--shell-2); }
+.btn-signin:active { transform: translateY(1px); }
+.btn-signin:focus-visible { outline: 3px solid rgba(42,140,130,.45); outline-offset: 2px; }
+.btn-signin:disabled { cursor: progress; background: #3A4760; }
+
+.notice {
+    display: flex; gap: 10px; align-items: flex-start; border-radius: 12px; padding: 12px 14px;
+    font-size: 14px; line-height: 1.45; margin-bottom: 22px; border: 1px solid transparent;
+}
+.notice i { font-size: 16px; line-height: 1.2; }
+.notice-danger  { background: #FBEDEA; border-color: #F1CDC6; color: #7E2A1F; }
+.notice-info    { background: #EAF5F3; border-color: #C7E4DF; color: #1E5F58; }
+.notice-success { background: #EAF5EE; border-color: #C9E6D3; color: #1F6040; }
+
+.assist { margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--rule); }
+.assist p { display: flex; gap: 10px; align-items: flex-start; margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); }
+.assist i { color: #8A93A6; font-size: 15px; line-height: 1.3; }
+
+.shake { animation: shake .36s; }
+@keyframes shake { 20%, 60% { transform: translateX(-7px); } 40%, 80% { transform: translateX(7px); } }
+
+/* ================= tablet / phone ================= */
+@media (max-width: 991.98px) {
+    .login-shell { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+    .brand-side { padding: 0; display: block; background: var(--shell); }
+    .brand-side .hero, .brand-side .brand-foot, .brand-side .brand-id { display: none; }
+    .brand-side::after {
+        /* slim band with a small glowing egg */
+        content: ""; display: block; height: 128px;
+        background:
+            radial-gradient(ellipse 22px 28px at 50% 40%, rgba(255,255,255,.95) 0 60%, transparent 64%),
+            radial-gradient(ellipse 60px 60px at 50% 44%, rgba(242,182,50,.45), transparent 70%),
+            var(--shell);
+    }
+    .form-side { align-items: flex-start; padding: 0 20px 40px; }
+    .form-card {
+        background: #fff; border-radius: 20px; margin-top: -36px; position: relative;
+        padding: 28px 24px 24px; box-shadow: 0 10px 30px rgba(27,37,54,.10);
+    }
+    .mobile-id { display: flex; align-items: center; gap: 10px; font-weight: 700; margin-bottom: 22px; }
+    .mobile-id .brand-logo { height: 32px; }
+    .mobile-id .egg-mark { width: 22px; height: 28px; box-shadow: inset 0 0 0 1.5px #D5DAE3; }
+    .form-card h1 { font-size: 28px; margin-bottom: 24px; }
+    .sub { display: none; }
+}
+@media (max-width: 380px) {
+    .form-side { padding: 0 12px 32px; }
+    .form-card { padding: 24px 18px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .egg .glow, .shake { animation: none; }
+    * { transition: none !important; }
+}
